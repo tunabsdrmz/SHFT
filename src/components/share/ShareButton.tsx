@@ -9,7 +9,7 @@ const ShareButton = (props: Props) => {
   const shareOptions = {
     title: 'Share via',
     message: 'some message',
-    url: 'some share url',
+    url: 'https://www.youtube.com/watch?v=k1frgt0D_f4',
     social: Share.Social.WHATSAPP,
     whatsAppNumber: '905435789202', // country code + phone number
   };
