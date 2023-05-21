@@ -22,14 +22,14 @@ const DeleteModal = ({id, rightActionModal, setRightActionModal}: Props) => {
   const queryClient = useQueryClient();
   const {error, mutate, isLoading} = useMutation({
     mutationFn: deleteIntake,
-    onSuccess: () => queryClient.refetchQueries({queryKey: ['intakes']}),
+    onSuccess: () => queryClient.invalidateQueries(['intakes']),
   });
   const closeDeleteModal = () => setRightActionModal(false);
   const handleDeleteIntake = () => {
     mutate(id);
     if (!error) setRightActionModal(false);
   };
-
+  console.log(isLoading);
   return (
     <>
       {error ? (

@@ -14,5 +14,6 @@ export const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: '700',
     textAlign: 'center',
+    color: '#000',
   },
 });

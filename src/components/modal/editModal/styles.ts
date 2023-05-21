@@ -60,5 +60,6 @@ export const styles = StyleSheet.create({
     padding: 10,
     fontSize: 24,
     fontWeight: '700',
+    color: '#000',
   },
 });

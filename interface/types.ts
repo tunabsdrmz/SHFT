@@ -12,6 +12,10 @@ export type Goal = {
   userId: string | number | undefined;
 };
 
+export type GoalData = {
+  data: Goal;
+};
+
 export type FilteredData = {
   filteredData: Intakes[];
 };

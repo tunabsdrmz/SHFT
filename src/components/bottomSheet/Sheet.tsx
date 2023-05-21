@@ -6,7 +6,7 @@ import {styles} from './styles';
 import {FilteredData} from 'interface/types';
 const Sheet = ({filteredData}: FilteredData) => {
   const sheetRef = useRef<BottomSheet>(null);
-  const snapPoints = useMemo(() => ['20%', '50%', '90%'], []);
+  const snapPoints = useMemo(() => ['10%', '50%', '90%'], []);
 
   return (
     <BottomSheet

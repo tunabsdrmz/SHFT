@@ -5,6 +5,8 @@ import {
   TextInput,
   Image,
   Modal,
+  TouchableWithoutFeedback,
+  Keyboard,
 } from 'react-native';
 import React, {useState} from 'react';
 import {useMutation, useQueryClient} from '@tanstack/react-query';
@@ -23,8 +25,9 @@ const AddModal = ({showAddModal, setShowAddModal}: Props) => {
   const queryClient = useQueryClient();
   const {error, isLoading, mutate} = useMutation({
     mutationFn: postIntake,
-    onSuccess: () => queryClient.refetchQueries({queryKey: ['intakes']}),
+    onSuccess: () => queryClient.invalidateQueries(['intakes']),
   });
+  console.log(isLoading);
 
   const closeAddModal = () => setShowAddModal(false);
   const handlePostIntake = () => {
@@ -32,7 +35,7 @@ const AddModal = ({showAddModal, setShowAddModal}: Props) => {
     if (!error) setShowAddModal(false);
   };
   return (
-    <>
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       {error ? (
         <Error error={error.toString()} />
       ) : (
@@ -73,7 +76,7 @@ const AddModal = ({showAddModal, setShowAddModal}: Props) => {
           </View>
         </View>
       )}
-    </>
+    </TouchableWithoutFeedback>
   );
 };
 

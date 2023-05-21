@@ -6,14 +6,13 @@ export const styles = StyleSheet.create({
     width: '90%',
     height: 250,
     backgroundColor: '#378CA7',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     justifyContent: 'space-between',
     borderRadius: 30,
     padding: 15,
-    marginTop: '60%',
+    marginTop: '40%',
     marginLeft: 'auto',
     marginRight: 'auto',
-    elevation: 10,
   },
   Text: {
     fontSize: 20,
@@ -60,5 +59,6 @@ export const styles = StyleSheet.create({
     padding: 10,
     fontSize: 24,
     fontWeight: '700',
+    color: '#000',
   },
 });

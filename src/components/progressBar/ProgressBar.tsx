@@ -9,6 +9,7 @@ const ProgressBar = ({goalIntake, filteredData}: FilteredGoalData) => {
   );
   let filteredAmounts = amounts.filter(element => !Number.isNaN(element));
   console.log(filteredAmounts);
+
   let intakeAmount = filteredAmounts.reduce((a, b) => a + b, 0);
   let progressPercentage;
 

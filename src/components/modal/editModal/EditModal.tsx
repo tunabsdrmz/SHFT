@@ -25,7 +25,7 @@ const EditModal = ({leftActionModal, setLeftActionModal, id}: Props) => {
   const queryClient = useQueryClient();
   const {error, isLoading, mutate} = useMutation({
     mutationFn: updateIntake,
-    onSuccess: () => queryClient.refetchQueries({queryKey: ['intakes']}),
+    onSuccess: () => queryClient.invalidateQueries(['intakes']),
   });
   const closeEditModal = () => setLeftActionModal(false);
   const handleUpdateIntake = () => {
@@ -35,6 +35,7 @@ const EditModal = ({leftActionModal, setLeftActionModal, id}: Props) => {
     });
     if (!error) setLeftActionModal(false);
   };
+  console.log(isLoading);
   return (
     <>
       {error ? (

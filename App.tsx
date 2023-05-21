@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Image, Text} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
@@ -9,11 +9,12 @@ import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {QueryClient} from '@tanstack/react-query';
 import {PersistQueryClientProvider} from '@tanstack/react-query-persist-client';
 import {createAsyncStoragePersister} from '@tanstack/query-async-storage-persister';
-
+import notifee, {EventType} from '@notifee/react-native';
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       cacheTime: 1000 * 60 * 60 * 24,
+      refetchOnWindowFocus: false,
     },
   },
 });
@@ -22,6 +23,19 @@ const asyncStoragePersister = createAsyncStoragePersister({
 });
 
 function App(): JSX.Element {
+  useEffect(() => {
+    return notifee.onForegroundEvent(({type, detail}) => {
+      switch (type) {
+        case EventType.DISMISSED:
+          console.log('User dismissed notification', detail.notification);
+          break;
+        case EventType.PRESS:
+          console.log('User pressed notification', detail.notification);
+          break;
+      }
+    });
+  }, []);
+
   const Tab = createMaterialTopTabNavigator();
   return (
     <PersistQueryClientProvider
